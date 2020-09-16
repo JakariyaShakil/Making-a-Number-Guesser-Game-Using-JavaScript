@@ -1,0 +1,73 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<meta charset="utf-8"> 
+	<!--Task for this Assignment: Making a Number Guesser Game Using JavaScript
+	
+	You will make a game where user has to input a number between a range. 
+	User will have 3 chances to guess the correct number. -->
+	<title>Making a Number Guesser Game Using JavaScript</title> 
+
+	<style> 
+		html { 
+	font-family: sans-serif; 
+	} 
+	
+		body { 
+	width: 50%; 
+	max-width: 800px; 
+	min-width: 480px; 
+	margin: 0 auto; 
+	} 
+	</style> 
+</head> 
+
+<body> 
+<h1>Please Guess The Number</h1> 
+
+<p>You have select a random number between 1 - 10. 
+See if you can guess it. max 3 times only</p> 
+
+<div class="form"> 
+	<label for="guess">Enter a guess number: </label> 
+	<input type = "text" id = "guess" class = "guess"> 
+	<input type = "submit" value = "Submit guess"
+		class = "guessSubmit" id = "checkBtn"> 
+</div> 
+
+<script type = "text/javascript"> 
+
+	var rannum = Math.floor((Math.random() * 10) + 1);
+var counter = 0; 
+var maxGuesses = 3; 
+var guess = 0;
+
+document.getElementById('checkBtn').onclick = function (){
+    var guess = document.getElementById('guess').value;
+    checkGuess(guess);
+    counter++;
+    
+    if(counter == maxGuesses) {
+        alert("You lose!");
+        document.getElementById("checkBtn").disabled = true;
+    }
+}
+
+function checkGuess(guess){
+    if (guess == rannum){ //if the value of playerguess is the same as rannum then the player wins
+        alert("You Win");
+        document.getElementById("checkBtn").disabled = true;
+    }
+    if (guess > rannum){ //if the player's guess is higher than the random number alert too high
+        alert("Correct answer is smaller!");
+        document.getElementById("guess").value='';
+    }
+
+    else if (guess < rannum){ //if the player's guess is lower than the random number alert too low
+    alert("Correct answer is greater!");
+         document.getElementById("guess").value='';
+     }
+}
+</script> 
+</body> 
+</html>					 
